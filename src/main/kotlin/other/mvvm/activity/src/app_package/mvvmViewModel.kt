@@ -12,6 +12,9 @@ fun mvvmViewModel(
 ) = """
 package $packageName
 import ${packageName}.base.mvvm.BaseVM
+import ${packageName}.http.NetResponseObserver
+import ${packageName}.http.engine.ServicesEngine
+import ${packageName}.view.dialog.CommonLoadingDialog
 
 /**
  * @description
@@ -19,6 +22,16 @@ import ${packageName}.base.mvvm.BaseVM
  * @date 
  */
 class ${activityClass}VM : BaseVM() {
+    
+    public fun getInfo() {
+        ServicesEngine.businessBanner().subscribe(object : NetResponseObserver<List<String>>(CommonLoadingDialog(mActivity)) {
+
+            override fun success(data: List<String>?) {
+                
+            }
+
+        })
+    }
     
 }   
  
