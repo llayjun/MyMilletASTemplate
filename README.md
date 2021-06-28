@@ -1,8 +1,10 @@
 # MyMilletASTemplate
 
-###参考自：https://www.bigademo.com/2021/01/20/AndroidStudio%204.1%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1/index.html
-###JetBrains地址：https://github.com/JetBrains/intellij-platform-plugin-template
-####根据这个一步一步来，需要注意几点
+### 参考自：https://www.bigademo.com/2021/01/20/AndroidStudio%204.1%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1/index.html
+
+### JetBrains地址：https://github.com/JetBrains/intellij-platform-plugin-template
+
+#### 根据这个一步一步来，需要注意几点
 ```
     pluginSinceBuild = 201
     pluginUntilBuild = 211.*
