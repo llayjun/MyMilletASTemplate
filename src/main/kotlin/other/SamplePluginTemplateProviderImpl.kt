@@ -10,6 +10,7 @@ import com.android.tools.idea.wizard.template.Template
 import com.android.tools.idea.wizard.template.WizardTemplateProvider
 import other.mvvm.activity.mvvmActivityTemplate
 import other.mvvm.refreshactivity.mvvmRefreshActivityTemplate
+import other.mvvm.slideCeilingfragment.mvvmTabCeilingActivityTemplate
 import other.mvvm.slidefragment.mvvmTabActivityTemplate
 
 class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
@@ -20,8 +21,8 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
             // activity列表刷新的模板
             mvvmRefreshActivityTemplate,
             // Tab fragment的模板
-            mvvmTabActivityTemplate
+            mvvmTabActivityTemplate,
             // Tab fragment 可以吸顶的模板
-//            mvvmTabCeilingActivityTemplate
+            mvvmTabCeilingActivityTemplate
     )
 }

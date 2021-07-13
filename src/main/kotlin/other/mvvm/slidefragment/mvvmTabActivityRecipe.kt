@@ -10,7 +10,7 @@ package other.mvvm.slidefragment
 //import other.mvvm.activity.src.app_package.mvvmRepository
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import other.mvvm.slidefragment.app_package.mvvmTabAcitivityKt
+import other.mvvm.slidefragment.app_package.mvvmTabActivityKt
 import other.mvvm.slidefragment.app_package.mvvmTabFragmentKt
 import other.mvvm.slidefragment.app_package.mvvmTabFragmentViewModel
 import other.mvvm.slidefragment.app_package.mvvmTabViewModel
@@ -42,7 +42,7 @@ fun RecipeExecutor.mvvmTabActivityRecipe(
 //    )
 
     // 保存Activity
-    save(mvvmTabAcitivityKt(projectData.applicationPackage, activityClass, layoutName, fragmentClass, packageName), srcOut.resolve("${activityClass}Activity.${ktOrJavaExt}"))
+    save(mvvmTabActivityKt(projectData.applicationPackage, activityClass, layoutName, fragmentClass, packageName), srcOut.resolve("${activityClass}Activity.${ktOrJavaExt}"))
     // 保存viewmodel
     save(mvvmTabViewModel(packageName, activityClass, itemLayoutName), srcOut.resolve("${activityClass}VM.${ktOrJavaExt}"))
     // 保存xml

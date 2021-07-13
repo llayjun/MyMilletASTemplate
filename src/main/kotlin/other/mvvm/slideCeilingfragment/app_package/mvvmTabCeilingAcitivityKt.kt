@@ -4,9 +4,9 @@
  * @date 2021/6/24 18:00
  */
 
-package other.mvvm.slidefragment.app_package
+package other.mvvm.slideCeilingfragment.app_package
 
-fun mvvmTabActivityKt(
+fun mvvmTabCeilingAcitivityKt(
         applicationPackage: String?,
         activityClass: String,
         layoutName: String,
@@ -29,6 +29,10 @@ import com.hhkj.base_lib.constant.ArouterPath
  // @Route(path = ArouterPath.xxxx)
 class ${activityClass}Activity : BaseAty<Activity${activityClass}Binding, ${activityClass}VM>() {
 
+    private lateinit var firstFragment: ${fragmentClass}Fragment
+    private lateinit var secondFragment: ${fragmentClass}Fragment
+    private lateinit var thirdFragment: ${fragmentClass}Fragment
+
     override val mVMClass: Class<${activityClass}VM>
         get() = ${activityClass}VM::class.java
 
@@ -41,16 +45,25 @@ class ${activityClass}Activity : BaseAty<Activity${activityClass}Binding, ${acti
     }
     
     override fun initView(savedInstanceState: Bundle?) {
+        firstFragment = ${fragmentClass}Fragment().newInstance()
+        secondFragment = ${fragmentClass}Fragment().newInstance()
+        thirdFragment = ${fragmentClass}Fragment().newInstance()
         // fragmentList
         mVM.fragmentList.apply {
-            add(${fragmentClass}Fragment().newInstance())
-            add(${fragmentClass}Fragment().newInstance())
-            add(${fragmentClass}Fragment().newInstance())
+            add(firstFragment)
+            add(secondFragment)
+            add(thirdFragment)
         }
         val myPagerAdapter = MyPagerAdapter(supportFragmentManager, mVM.fragmentList)
         view_pager.adapter = myPagerAdapter
         view_pager.offscreenPageLimit = myPagerAdapter.count
         tab_segment.setViewPager(view_pager, mVM.tagArray.toTypedArray())
+        mBinding.smartRefresh.setOnRefreshListener {
+            mVM.getInfoList(it)
+            firstFragment.refreshRv()
+            secondFragment.refreshRv()
+            thirdFragment.refreshRv()
+        }
     }
 
     override fun loadData(savedInstanceState: Bundle?) {
