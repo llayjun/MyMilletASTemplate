@@ -22,27 +22,29 @@ fun mvvmTabActivityXml(
         android:orientation="vertical"
         tools:context="${packageName}.${activityClass}Activity">
 
-        <com.longyan.mmmutually.view.TitleLayout
-            android:id="@+id/titleLayout"
-            style="@style/mm_title_style_pt"
-            android:background="@color/color_ffffff"
-            app:title_text="xxxx" />
+        <com.hhkj.base_lib.ui.view.BaseActionBarView
+            android:layout_width="match_parent"
+            android:layout_height="140pt"
+            app:action_bar_title="xxx" />
     
         <com.flyco.tablayout.SlidingTabLayout
             android:id="@+id/tab_segment"
             android:layout_width="match_parent"
             android:layout_height="120pt"
             app:tl_indicator_anim_enable="true"
-            app:tl_indicator_color="@color/color_FF6E44"
+            app:tl_indicator_color="@color/color_FFD41D"
             app:tl_indicator_corner_radius="4pt"
             app:tl_indicator_height="9pt"
+            android:paddingStart="30pt"
+            android:paddingEnd="30pt"
             app:tl_indicator_width="101pt"
+            app:tl_tab_space_equal="true"
             app:tl_indicator_width_equal_title="true"
             app:tl_textSelectColor="@color/color_333333"
             app:tl_textUnselectColor="@color/color_666666"
             app:tl_textsize="46pt" />
 
-        <com.longyan.mmmutually.txl.widget.AutoHeightViewPager
+        <com.hhkj.base_lib.ui.view.NoScrollViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

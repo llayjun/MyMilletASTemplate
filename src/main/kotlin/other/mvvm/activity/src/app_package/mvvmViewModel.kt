@@ -11,10 +11,8 @@ fun mvvmViewModel(
         activityClass: String
 ) = """
 package $packageName
-import ${packageName}.base.mvvm.BaseVM
-import ${packageName}.http.NetResponseObserver
-import ${packageName}.http.engine.ServicesEngine
-import ${packageName}.view.dialog.CommonLoadingDialog
+import com.hhkj.base_lib.base.BaseVM
+import ${packageName}.order.repository.MeowCoinOrderRepository
 
 /**
  * @description
@@ -23,14 +21,14 @@ import ${packageName}.view.dialog.CommonLoadingDialog
  */
 class ${activityClass}VM : BaseVM() {
     
+    private val orderRepository by lazy {
+        MeowCoinOrderRepository()
+    }
+
     public fun getInfo() {
-        ServicesEngine.businessBanner().subscribe(object : NetResponseObserver<List<String>>(CommonLoadingDialog(mActivity)) {
+        launch(netBlock = { orderRepository.mallOrderDetail(1) }) {
 
-            override fun success(data: List<String>?) {
-                
-            }
-
-        })
+        }
     }
     
 }   

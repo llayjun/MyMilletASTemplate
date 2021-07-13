@@ -13,20 +13,15 @@ fun mvvmTabFragmentItemXml(
     android:background="@color/color_ffffff"
     android:paddingBottom="45pt">
 
-    <com.ruffian.library.widget.RTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawablePadding="22pt"
-        android:textColor="@color/color_000000"
-        android:textSize="33pt"
-        app:icon_height="39pt"
-        app:icon_width="39pt"
-        app:icon_src_normal="@mipmap/ic_meet_location"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.ruffian.library.widget.RImageView
+        android:id="@+id/ri_header"
+        android:layout_width="300pt"
+        android:layout_height="300pt"
+        android:scaleType="centerCrop"
+        app:corner_radius="25pt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="xxx" />
+        tools:src="@mipmap/new_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 """

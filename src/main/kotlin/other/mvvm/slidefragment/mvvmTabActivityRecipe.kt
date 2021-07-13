@@ -12,6 +12,7 @@ import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import other.mvvm.slidefragment.app_package.mvvmTabAcitivityKt
 import other.mvvm.slidefragment.app_package.mvvmTabFragmentKt
+import other.mvvm.slidefragment.app_package.mvvmTabFragmentViewModel
 import other.mvvm.slidefragment.app_package.mvvmTabViewModel
 import other.mvvm.slidefragment.layout.mvvmTabActivityXml
 import other.mvvm.slidefragment.layout.mvvmTabFragmentItemXml
@@ -42,16 +43,18 @@ fun RecipeExecutor.mvvmTabActivityRecipe(
 
     // 保存Activity
     save(mvvmTabAcitivityKt(projectData.applicationPackage, activityClass, layoutName, fragmentClass, packageName), srcOut.resolve("${activityClass}Activity.${ktOrJavaExt}"))
+    // 保存viewmodel
+    save(mvvmTabViewModel(packageName, activityClass, itemLayoutName), srcOut.resolve("${activityClass}VM.${ktOrJavaExt}"))
     // 保存xml
     save(mvvmTabActivityXml(packageName, activityClass), resOut.resolve("layout/${layoutName}.xml"))
     // 保存Fragment
     save(mvvmTabFragmentKt(projectData.applicationPackage, fragmentClass, layoutFragmentName, activityClass, packageName), srcOut.resolve("${fragmentClass}Fragment.${ktOrJavaExt}"))
+    // 保存Fragment viewmodel
+    save(mvvmTabFragmentViewModel(packageName, fragmentClass, itemLayoutName), srcOut.resolve("${fragmentClass}FragVM.${ktOrJavaExt}"))
     // 保存fragment xml
     save(mvvmTabFragmentXml(packageName, fragmentClass, itemLayoutName), resOut.resolve("layout/${layoutFragmentName}.xml"))
     // 保存item xml
     save(mvvmTabFragmentItemXml(packageName, fragmentClass), resOut.resolve("layout/${itemLayoutName}.xml"))
-    // 保存viewmodel
-    save(mvvmTabViewModel(packageName, activityClass, itemLayoutName), srcOut.resolve("${activityClass}VM.${ktOrJavaExt}"))
     // 保存repository
 //    save(mvvmRepository(packageName, activityClass), srcOut.resolve("${activityClass}Repository.${ktOrJavaExt}"))
 }

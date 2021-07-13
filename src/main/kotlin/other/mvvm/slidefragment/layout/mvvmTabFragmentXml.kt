@@ -13,7 +13,7 @@ fun mvvmTabFragmentXml(
     <data>
         <variable
             name="viewModel"
-            type="${packageName}.${fragmentClass}VM" />
+            type="${packageName}.${fragmentClass}FragVM" />
     </data>
     
     <LinearLayout

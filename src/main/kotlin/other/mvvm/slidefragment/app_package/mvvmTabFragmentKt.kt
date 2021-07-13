@@ -12,7 +12,7 @@ package $packageName
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
-import ${packageName}.base.mvvm.BaseFrag
+import com.hhkj.base_lib.base.BaseFrag
 import ${packageName}.databinding.Fragment${fragmentClass}Binding
 
 /**
@@ -20,14 +20,14 @@ import ${packageName}.databinding.Fragment${fragmentClass}Binding
  * @author Millet
  * @date 
  */
-class ${fragmentClass}Fragment : BaseFrag<Fragment${fragmentClass}Binding, ${activityClass}VM>() {
+class ${fragmentClass}Fragment : BaseFrag<Fragment${fragmentClass}Binding, ${fragmentClass}FragVM>() {
 
     public fun newInstance(): ${fragmentClass}Fragment{
             return ${fragmentClass}Fragment()
     }
 
-    override val mVMClass: Class<${activityClass}VM>
-        get() = ${activityClass}VM::class.java
+    override val mVMClass: Class<${fragmentClass}FragVM>
+        get() = ${fragmentClass}FragVM::class.java
 
     override val mLayoutRes: Int
         get() = R.layout.${layoutFragmentName}

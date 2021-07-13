@@ -29,11 +29,10 @@ fun mvvmActivityXml(
         android:orientation="vertical"
         tools:context="${packageName}.${activityClass}Activity">
 
-        <com.longyan.mmmutually.view.TitleLayout
-            android:id="@+id/titleLayout"
-            style="@style/mm_title_style_pt"
-            android:background="@color/color_ffffff"
-            app:title_text="xxxx" />
+        <com.hhkj.base_lib.ui.view.BaseActionBarView
+            android:layout_width="match_parent"
+            android:layout_height="140pt"
+            app:action_bar_title="xxx" />
     
         <androidx.constraintlayout.widget.ConstraintLayout 
             android:layout_width="match_parent"

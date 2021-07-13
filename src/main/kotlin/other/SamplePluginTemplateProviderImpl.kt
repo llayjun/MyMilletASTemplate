@@ -21,5 +21,7 @@ class SamplePluginTemplateProviderImpl : WizardTemplateProvider() {
             mvvmRefreshActivityTemplate,
             // Tab fragment的模板
             mvvmTabActivityTemplate
+            // Tab fragment 可以吸顶的模板
+//            mvvmTabCeilingActivityTemplate
     )
 }

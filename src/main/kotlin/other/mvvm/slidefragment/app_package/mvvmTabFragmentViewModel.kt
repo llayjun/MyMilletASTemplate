@@ -1,14 +1,14 @@
 /**
  * @description
  * @author Millet
- * @date 2021/6/24 18:01
+ * @date
  */
 
-package other.mvvm.refreshactivity.src.app_package
+package other.mvvm.slidefragment.app_package
 
-fun mvvmRefreshViewModel(
+fun mvvmTabFragmentViewModel(
         packageName: String,
-        activityClass: String,
+        fragmentClass: String,
         itemLayoutName: String
 ) = """
 package $packageName
@@ -24,7 +24,7 @@ import ${packageName}.order.repository.MeowCoinOrderRepository
  * @author Millet
  * @date 
  */
-class ${activityClass}VM : BaseVM() {
+class ${fragmentClass}FragVM : BaseVM() {
 
     private val orderRepository by lazy {
         MeowCoinOrderRepository()
@@ -32,17 +32,17 @@ class ${activityClass}VM : BaseVM() {
 
     public var index = 1
     
-    var adapter: My${activityClass}Adapter = My${activityClass}Adapter()
+    var adapter: My${fragmentClass}Adapter = My${fragmentClass}Adapter()
     
-    init {
+    public fun initListener() {
         // item点击
-        adapter.setOnItemClickListener { adapter, view, position -> 
-            
+        adapter.setOnItemClickListener { adapter, view, position ->
+
         }
         // item child点击
         adapter.setOnItemChildClickListener { adapter, view, position ->
             when (view.id) {
-                
+
             }
         }
     }
@@ -66,7 +66,7 @@ class ${activityClass}VM : BaseVM() {
        }
     }
     
-    open inner class My${activityClass}Adapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.${itemLayoutName}, ArrayList<String>()) {
+    open inner class My${fragmentClass}Adapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.${itemLayoutName}, ArrayList<String>()) {
 
         override fun convert(holder: BaseViewHolder, item: String?) {
 //            val header = holder.getView<RImageView>(R.id.ri_header)
