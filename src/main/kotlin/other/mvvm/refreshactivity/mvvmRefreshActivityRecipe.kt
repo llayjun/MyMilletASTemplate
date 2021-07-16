@@ -43,7 +43,7 @@ fun RecipeExecutor.mvvmRefreshActivityRecipe(
     // 保存item xml
     save(mvvmRefreshActivityItemXml(packageName, activityClass), resOut.resolve("layout/${itemLayoutName}.xml"))
     // 保存viewmodel
-    save(mvvmRefreshViewModel(packageName, activityClass, itemLayoutName), srcOut.resolve("${activityClass}VM.${ktOrJavaExt}"))
+    save(mvvmRefreshViewModel(packageName, activityClass), srcOut.resolve("${activityClass}VM.${ktOrJavaExt}"))
     // 保存repository
 //    save(mvvmRepository(packageName, activityClass), srcOut.resolve("${activityClass}Repository.${ktOrJavaExt}"))
 }

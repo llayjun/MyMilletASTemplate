@@ -44,7 +44,7 @@ fun mvvmRefreshActivityXml(
             app:srlEnablePreviewInEditMode="true">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_xxx"
+                android:id="@+id/rv_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

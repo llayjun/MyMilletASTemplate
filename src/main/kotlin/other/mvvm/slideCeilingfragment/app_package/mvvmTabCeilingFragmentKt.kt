@@ -4,7 +4,6 @@ fun mvvmTabCeilingFragmentKt(
         applicationPackage: String?,
         fragmentClass: String,
         layoutFragmentName: String,
-        activityClass: String,
         packageName: String
 ) = """
 package $packageName
@@ -14,6 +13,11 @@ import android.os.Bundle
 import android.view.View
 import com.hhkj.base_lib.base.BaseFrag
 import ${packageName}.databinding.Fragment${fragmentClass}Binding
+import ${packageName}.databinding.Item${fragmentClass}Binding
+import com.hhkj.base_lib.base.adater.BaseBindingAdapter
+import com.hhkj.base_lib.base.adater.VBViewHolder
+import android.view.LayoutInflater
+import android.view.ViewGroup
 
 /**
  * @description
@@ -21,6 +25,8 @@ import ${packageName}.databinding.Fragment${fragmentClass}Binding
  * @date 
  */
 class ${fragmentClass}Fragment : BaseFrag<Fragment${fragmentClass}Binding, ${fragmentClass}FragVM>() {
+
+    var myAdapter: ${fragmentClass}Adapter = ${fragmentClass}Adapter()
 
     public fun newInstance(): ${fragmentClass}Fragment{
             return ${fragmentClass}Fragment()
@@ -38,21 +44,33 @@ class ${fragmentClass}Fragment : BaseFrag<Fragment${fragmentClass}Binding, ${fra
     }
 
     override fun initView(contentView: View, savedInstanceState: Bundle?) {
-        mBinding.rvXxx.run {
-            adapter = mVM.adapter.apply {
-                setEmptyView(R.layout.view_new_empty_data, mBinding.rvXxx)
+        mBinding.rvView.run {
+            adapter = myAdapter.apply {
+                setEmptyView(R.layout.view_new_empty_data, mBinding.rvView)
+                myAdapter.setOnLoadMoreListener({
+                    mVM.index++
+                    mVM.getInfoList(myAdapter)
+                }, this@run)
             }
-            mVM.adapterLoadMoreData(this)
         }
-        mVM.adapter.setNewData(listOf("aaa", "bbb", "ccc", "bbb", "ccc", "bbb", "ccc"))
+        myAdapter.setNewData(listOf("aaa", "bbb", "ccc", "bbb", "ccc", "bbb", "ccc"))
     }
 
     override fun loadData(savedInstanceState: Bundle?) {
-        mVM.getInfoList(mVM.index)
+        refreshRv()
     }
 
     override fun clickListener() {
-        mVM.initListener()
+        // item点击
+        myAdapter.setOnItemClickListener { adapter, view, position ->
+
+        }
+        // item child点击
+        myAdapter.setOnItemChildClickListener { adapter, view, position ->
+            when (view.id) {
+
+            }
+        }
     }
     
     /**
@@ -60,7 +78,20 @@ class ${fragmentClass}Fragment : BaseFrag<Fragment${fragmentClass}Binding, ${fra
      */
     public fun refreshRv() {
         mVM.index = 1
-        mVM.getInfoList(mVM.index)
+        mVM.getInfoList(myAdapter)
+    }
+    
+     open inner class ${fragmentClass}Adapter : BaseBindingAdapter<String, Item${fragmentClass}Binding>(ArrayList<String>()) {
+
+        override fun createViewBinding(inflater: LayoutInflater, parent: ViewGroup): Item${fragmentClass}Binding {
+            return Item${fragmentClass}Binding.inflate(inflater, parent, false)
+        }
+
+        override fun convert(helper: VBViewHolder<Item${fragmentClass}Binding>, item: String?) {
+            helper.vb.bean = item
+            helper.vb.executePendingBindings()
+        }
+
     }
  
 } 

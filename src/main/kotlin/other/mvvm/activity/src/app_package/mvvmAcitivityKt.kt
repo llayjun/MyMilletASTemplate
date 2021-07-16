@@ -16,7 +16,7 @@ package $packageName
 import android.os.Bundle
 import com.hhkj.base_lib.base.BaseAty
 import ${packageName}.databinding.Activity${activityClass}Binding
-import com.hhkj.base_lib.constant.ArouterPath
+//import com.hhkj.base_lib.constant.ArouterPath
 
 /**
  * @description

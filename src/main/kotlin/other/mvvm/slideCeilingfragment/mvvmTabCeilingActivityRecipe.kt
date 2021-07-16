@@ -48,9 +48,9 @@ fun RecipeExecutor.mvvmTabCeilingActivityRecipe(
     // 保存xml
     save(mvvmTabCeilingActivityXml(packageName, activityClass), resOut.resolve("layout/${layoutName}.xml"))
     // 保存Fragment
-    save(mvvmTabCeilingFragmentKt(projectData.applicationPackage, fragmentClass, layoutFragmentName, activityClass, packageName), srcOut.resolve("${fragmentClass}Fragment.${ktOrJavaExt}"))
+    save(mvvmTabCeilingFragmentKt(projectData.applicationPackage, fragmentClass, layoutFragmentName, packageName), srcOut.resolve("${fragmentClass}Fragment.${ktOrJavaExt}"))
     // 保存Fragment viewmodel
-    save(mvvmTabCeilingFragmentViewModel(packageName, fragmentClass, itemLayoutName), srcOut.resolve("${fragmentClass}FragVM.${ktOrJavaExt}"))
+    save(mvvmTabCeilingFragmentViewModel(packageName, fragmentClass), srcOut.resolve("${fragmentClass}FragVM.${ktOrJavaExt}"))
     // 保存fragment xml
     save(mvvmTabCeilingFragmentXml(packageName, fragmentClass, itemLayoutName), resOut.resolve("layout/${layoutFragmentName}.xml"))
     // 保存item xml
